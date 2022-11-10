@@ -84,27 +84,46 @@ function formatoFechaActual(fecha){
 }
 
 function formatoFechaSemanal(fecha){
+    dateSem = [];
     const inicio = new Date(fecha[0]);
     const fin = new Date(fecha[167]);
     const UN_DIA_EN_MILISEGUNDOS = 1000 * 60 * 60 * 24;
-    const INTERVALO = UN_DIA_EN_MILISEGUNDOS * 7; // Cada semana
-    const formateadorFecha = new Intl.DateTimeFormat('es-AR', { dateStyle: 'medium', })
-    
+    const formateadorFecha = new Intl.DateTimeFormat({ dateStyle: 'medium', })
     for (let i = inicio; i <= fin; i = new Date(i.getTime() + UN_DIA_EN_MILISEGUNDOS)) {
-        console.log(formateadorFecha.format(i));
+        dateSem.push(formateadorFecha.format(i));
     }
+    return dateSem;
 }
+
+
 
 function climaExtendido (datos){
     const { hourly:{time,temperature_2m, apparent_temperature, precipitation, windspeed_10m} } = datos;
 
-        var fechaExtendida = formatoFechaSemanal(time);
-        console.log(fechaExtendida);
-        const temperature_2mExtend = temperature_2m.slice(0,24)[i];
-        const apparent_temperatureExtend = apparent_temperature.slice(0,24)[i];
-        const precipitationExtend = precipitation.slice(0,24)[i];
-        const windspeed_10mExtend = windspeed_10m.slice(0,24)[i];
+        var formatoSem = formatoFechaSemanal(time);
+        for (let index = 0; index < formatoSem.length; index++) {
+            const element = formatoSem[index];
+            console.log(element);
+            //temperatura maximas del dia  //
+            let temperaturaMaxima = (Math.max(...temperature_2m.slice(index*24,(index+1)*24)));
+            console.log(temperaturaMaxima);
+            //temperatura minimas del dia
+            let temperaturaMinima = (Math.min(...temperature_2m.slice(index*24,(index+1)*24)));
+            console.log(temperaturaMinima);
+            //sensacion termica maximas del dia
+            let sensacionTermicaMaxima = (Math.max(...apparent_temperature.slice(index*24,(index+1)*24)));
+            console.log(sensacionTermicaMaxima);
+            //presipitacion total del dia
+            let precipitacionTotal = (precipitation.slice(index*24,(index+1)*24).reduce((a,b) => a + b, 0));
+            console.log(precipitacionTotal);
+            //velocidad del viento maxima del dia
+            let velocidadVientoMaxima = (Math.max(...windspeed_10m.slice(index*24,(index+1)*24)));
+            console.log(velocidadVientoMaxima);
+            
 
+            
+        }
+        
         // console.log(fecha);
         // console.log(temperature_2mExtend);
         // console.log(apparent_temperatureExtend);
