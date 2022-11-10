@@ -1,5 +1,6 @@
 const container = document.querySelector('.container');
 const resultado = document.querySelector('#resultado');
+const extendido = document.querySelector('#extendido');
 
 let url = 'https://api.open-meteo.com/v1/forecast?latitude=-54.82&longitude=-68.36&hourly=temperature_2m,apparent_temperature,precipitation,windspeed_10m&timezone=America%2FSao_Paulo';
 
@@ -11,10 +12,8 @@ fetch(url)
         
 
 mostrarDatos = (datos) => {
-    climaActual(datos);
+   // climaActual(datos);
     climaExtendido(datos);
-    // iconoPrecipitaciones(datos)
-
 }
 
 
@@ -107,8 +106,8 @@ function climaExtendido (datos){
 
         var formatoSem = formatoFechaSemanal(time);
         for (let index = 0; index < formatoSem.length; index++) {
-            const element = formatoSem[index];
-            console.log(element);
+            const fechaDate = formatoSem[index];
+            console.log(fechaDate);
             //temperatura maximas del dia  //
             let temperaturaMaxima = (Math.max(...temperature_2m.slice(index*24,(index+1)*24)));
             console.log(temperaturaMaxima);
@@ -126,6 +125,45 @@ function climaExtendido (datos){
             console.log(velocidadVientoMaxima);
             let icono = iconoPrecipitaciones(precipitacionTotal);
             console.log(icono);
+
+            const iconoClima = document.createElement('div');
+            iconoClima.innerHTML = `${icono}`;
+
+            const fecha = document.createElement('p');
+            fecha.innerHTML = `Fecha de Hoy: ${fechaDate}`;
+            fecha.classList.add('text-xl')
+
+            const tempMaxima = document.createElement('p');
+            tempMaxima.innerHTML = `Temperatura Max: ${temperaturaMaxima}&#8451;`;
+            tempMaxima.classList.add('text-xl')
+
+
+            const tempMinima = document.createElement('p');
+            tempMinima.innerHTML = `Temperatura Min: ${temperaturaMinima} &#8451;`;
+            tempMinima.classList.add('text-xl')
+
+            const sensacionTerm = document.createElement('p');
+            sensacionTerm.innerHTML = `Sensacion Termica: ${sensacionTermicaMaxima} &#8451;`;
+            sensacionTerm.classList.add('text-xl')
+
+            const precipitacionTot = document.createElement('p');
+            precipitacionTot.innerHTML = `Lluvia : ${precipitacionTotal} mm`;
+            precipitacionTot.classList.add('text-xl')
+            
+            const vientoMax = document.createElement('p');
+            vientoMax.innerHTML = `Viento: ${velocidadVientoMaxima } km/h;`;
+            vientoMax.classList.add('text-xl')
+
+            const extendidoDiv = document.createElement('div');
+            extendidoDiv.classList.add('text-center', 'text-white')
+            extendidoDiv.appendChild(iconoClima);
+            extendidoDiv.appendChild(fecha);
+            extendidoDiv.appendChild(tempMaxima);
+            extendidoDiv.appendChild(tempMinima);
+            extendidoDiv.appendChild(sensacionTerm);
+            extendidoDiv.appendChild(precipitacionTot);
+            extendidoDiv.appendChild(vientoMax);
+            extendido.appendChild(extendidoDiv)
         }
     }
 
