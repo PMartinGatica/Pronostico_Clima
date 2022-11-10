@@ -13,7 +13,7 @@ fetch(url)
 mostrarDatos = (datos) => {
     climaActual(datos);
     climaExtendido(datos);
-    iconoPrecipitaciones(datos)
+    // iconoPrecipitaciones(datos)
 
 }
 
@@ -37,7 +37,11 @@ function climaActual(datos){
         //velocidad del viento maxima del dia
         let velocidadVientoMaxima = (Math.max(...windspeed_10m.slice(0,24)));
         // console.log(velocidadVientoMaxima);    
+        let icono = iconoPrecipitaciones(precipitacionTotal);
         
+        const iconoClima = document.createElement('div');
+        iconoClima.innerHTML = `${icono}`;
+
         const fechaActual = document.createElement('p');
         fechaActual.innerHTML = `Fecha de Hoy: ${fechaDate}`;
         fechaActual.classList.add('text-xl')
@@ -65,6 +69,7 @@ function climaActual(datos){
 
         const resultadoDiv = document.createElement('div');
         resultadoDiv.classList.add('text-center', 'text-white')
+        resultadoDiv.appendChild(iconoClima);
         resultadoDiv.appendChild(fechaActual);
         resultadoDiv.appendChild(tempMaxima);
         resultadoDiv.appendChild(tempMinima);
@@ -97,7 +102,6 @@ function formatoFechaSemanal(fecha){
 }
 
 
-
 function climaExtendido (datos){
     const { hourly:{time,temperature_2m, apparent_temperature, precipitation, windspeed_10m} } = datos;
 
@@ -127,12 +131,12 @@ function climaExtendido (datos){
 
     function iconoPrecipitaciones(precipitations){
         if (precipitations === 0) 
-        {return `src='./images/icons/animated/clear-day.svg' alt='soleado'`;}
+        {return `<img src="./img/animated/clear-day.svg" alt="Soleado">`;}
 
-        if (precipitations <= 2) {return `src='./images/icons/animated/rainy-1-day.svg' alt='Lluvias débiles'`;}
-        if (precipitations <= 30) {return `src='./images/icons/animated/rainy-2-day.svg' alt='Lluvia'`;};
-        if (precipitations <= 60) {return `src='./images/icons/animated/rainy-3-day.svg' alt='Lluvias muy fuertes'`}
-        else {return `src='./images/icons/animated/rainy-3-day.svg' alt='Lluvias muy fuertes'`;}
+        if (precipitations <= 2) {return `<img src='./img/animated/rainy-1-day.svg' alt='Lluvias débiles'>`;}
+        if (precipitations <= 30) {return `<img src='./img/animated/rainy-2-day.svg' alt='Lluvia'>`;};
+        if (precipitations <= 60) {return `<img src='./img/animated/rainy-3-day.svg' alt='Lluvias muy fuertes'>`}
+        else {return `<img src='./img/animated/scattered-thunderstorms-day.svg' alt='Lluvias muy fuertes'>`;}
     }
 
 
