@@ -13,6 +13,7 @@ fetch(url)
 mostrarDatos = (datos) => {
     climaActual(datos);
     climaExtendido(datos);
+    iconoPrecipitaciones(datos)
 
 }
 
@@ -119,16 +120,34 @@ function climaExtendido (datos){
             //velocidad del viento maxima del dia
             let velocidadVientoMaxima = (Math.max(...windspeed_10m.slice(index*24,(index+1)*24)));
             console.log(velocidadVientoMaxima);
-            
-
-            
         }
-        
-        // console.log(fecha);
-        // console.log(temperature_2mExtend);
-        // console.log(apparent_temperatureExtend);
-        // console.log(precipitationExtend);
-        // console.log(windspeed_10mExtend);
-
     }
+
+    function iconoPrecipitaciones(datos){
+        const { hourly:{temperature_2m,precipitation} } = datos;
+        switch (temperature_2m,precipitation) {
+            case (temperature_2m < 0 && precipitation >60):
+                console.log('Lluvia Torrenciales');
+                break;
+            case (temperature_2m < 0 && precipitation >30):
+                console.log('Lluvia muy fuerte');
+                break;
+                case (temperature_2m < 0  && precipitation >15):
+                    console.log('Lluvia Fuertes');
+                    break;
+                case (temperature_2m < 0 && precipitation >2):
+                    console.log('Lluvia');
+                    break;
+                case (temperature_2m < 10 && precipitation < 2):
+                    console.log('Lluvia Debil');
+                    break;
+                case (temperature_2m > 11 && precipitation <= 0):
+                    console.log('Nubes');
+                    break;
+                default:
+                console.log('Sol');
+                break;
+        }
+    }
+
 
