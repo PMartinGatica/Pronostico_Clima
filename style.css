@@ -17,7 +17,7 @@ header .logo p{
     color: #777;
 }
 
-/* .temperaturaActual .tarjetaActual {
-    max-width: 250px;
-    max-height: 300px;
-} */
+card-body .temperatureText{
+    font-weight: bold;
+   
+}

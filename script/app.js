@@ -15,89 +15,18 @@ mostrarDatos = (datos) => {
     climaActual(datos);
     climaExtendido(datos);
 }
-
-
 function climaActual(datos){
     const { hourly:{time,temperature_2m, apparent_temperature, precipitation, windspeed_10m} } = datos;
         const fecha = time[0];
         var fechaDate = formatoFechaActual(fecha);
-        //temperatura maximas del dia  //
         let temperaturaMaxima = (Math.max(...temperature_2m.slice(0,24)));
-        // console.log(temperaturaMaxima);
-        //temperatura minimas del dia
         let temperaturaMinima = (Math.min(...temperature_2m.slice(0,24)));
-        // console.log(temperaturaMinima);
-        //sensacion termica maximas del dia
         let sensacionTermicaMaxima = (Math.max(...apparent_temperature.slice(0,24)));
-        // console.log(sensacionTermicaMaxima);
-        //presipitacion total del dia
         let precipitacionTotal = (precipitation.slice(0,24).reduce((a,b) => a + b, 0));
-        // console.log(precipitacionTotal);
-        //velocidad del viento maxima del dia
         let velocidadVientoMaxima = (Math.max(...windspeed_10m.slice(0,24)));
-        // console.log(velocidadVientoMaxima);    
         let icono = iconoPrecipitaciones(precipitacionTotal);
-
         temperaturaActual.innerHTML += TemperaturaActual(icono ,temperaturaMaxima,velocidadVientoMaxima);
-        
-        // const row = document.createElement('div')
-        // row.classList.add("row mt-3")
-        // const divCol = document.createElement('div')
-        // divCol.classList.add('col');
-        // divCol.classList.add('d-flex');
-        // divCol.classList.add('justify-content-center');
-        // divCol.classList.add('align-items-center');
-        // const divCard = document.createElement('div');
-        // divCard.classList.add('card')
-        // const iconoClima = document.createElement('div');
-        // iconoClima.innerHTML = `${icono}`;
-        // const divCardBody = document.createElement('div');
-        // divCardBody.classList.add('card-body')
-
-
-        // // const fechaActual = document.createElement('p');
-        // // fechaActual.innerHTML = `Fecha de Hoy: ${fechaDate}`;
-        // // fechaActual.classList.add('text-xl')
-
-        // const tempMaxima = document.createElement('h5');
-        // tempMaxima.innerHTML = `${temperaturaMaxima}&#8451;`;
-        // tempMaxima.classList.add('card-title')
-
-
-        // // const tempMinima = document.createElement('p');
-        // // tempMinima.innerHTML = `Temperatura Min: ${temperaturaMinima} &#8451;`;
-        // // tempMinima.classList.add('text-xl')
-
-        // // const sensacionTerm = document.createElement('p');
-        // // sensacionTerm.innerHTML = `Sensacion Termica: ${sensacionTermicaMaxima} &#8451;`;
-        // // sensacionTerm.classList.add('text-xl')
-
-        // // const precipitacionTot = document.createElement('p');
-        // // precipitacionTot.innerHTML = ` : ${precipitacionTotal} mm`;
-        // // precipitacionTot.classList.add('text-xl')
-        
-        // const vientoMax = document.createElement('h6');
-        // vientoMax.innerHTML = `Viento: ${velocidadVientoMaxima} km/h;`;
-        // vientoMax.classList.add('card-subtitle')
-        // vientoMax.classList.add('text-muted')
-        // vientoMax.classList.add('mb-2')
-
-        // const resultadoDiv = document.createElement('div')
-        // resultadoDiv.classList.add("row")
-        // resultadoDiv.classList.add("mt-3")
-        // resultadoDiv.appendChild(divCol);
-        // resultadoDiv.appendChild(divCard);
-        // resultadoDiv.appendChild(iconoClima);
-        // resultadoDiv.appendChild(divCardBody);
-        // resultadoDiv.appendChild(tempMaxima);
-        // // resultadoDiv.appendChild(tempMinima);
-        // // resultadoDiv.appendChild(sensacionTerm);
-        // // resultadoDiv.appendChild(precipitacionTot);
-        // resultadoDiv.appendChild(vientoMax);
-        // resultado.appendChild(resultadoDiv)
-
 }
-
 function formatoFechaActual(fecha){
     const fechaFormateada = new Date(fecha);
     const dia = fechaFormateada.getDate();
@@ -123,72 +52,67 @@ function climaExtendido (datos){
 
         var formatoSem = formatoFechaSemanal(time);
         for (let index = 0; index < formatoSem.length; index++) {
-            const fechaDate = formatoSem[index];
+            var fechaDate = formatoSem[index];
             console.log(fechaDate);
             //temperatura maximas del dia  //
-            let temperaturaMaxima = (Math.max(...temperature_2m.slice(index*24,(index+1)*24)));
+            var temperaturaMaxima = (Math.max(...temperature_2m.slice(index*24,(index+1)*24)));
             console.log(temperaturaMaxima);
             //temperatura minimas del dia
-            let temperaturaMinima = (Math.min(...temperature_2m.slice(index*24,(index+1)*24)));
+            var temperaturaMinima = (Math.min(...temperature_2m.slice(index*24,(index+1)*24)));
             console.log(temperaturaMinima);
             //sensacion termica maximas del dia
-            let sensacionTermicaMaxima = (Math.max(...apparent_temperature.slice(index*24,(index+1)*24)));
+            var sensacionTermicaMaxima = (Math.max(...apparent_temperature.slice(index*24,(index+1)*24)));
             console.log(sensacionTermicaMaxima);
             //presipitacion total del dia
-            let precipitacionTotal = (precipitation.slice(index*24,(index+1)*24).reduce((a,b) => a + b, 0));
+            var precipitacionTotal = (precipitation.slice(index*24,(index+1)*24).reduce((a,b) => a + b, 0));
             console.log(precipitacionTotal);
             //velocidad del viento maxima del dia
-            let velocidadVientoMaxima = (Math.max(...windspeed_10m.slice(index*24,(index+1)*24)));
+            var velocidadVientoMaxima = (Math.max(...windspeed_10m.slice(index*24,(index+1)*24)));
             console.log(velocidadVientoMaxima);
-            let icono = iconoPrecipitaciones(precipitacionTotal);
+            var icono = iconoPrecipitaciones(precipitacionTotal);
             console.log(icono);
+            // const iconoClima = document.createElement('div');
+            // iconoClima.innerHTML = `${icono}`;
 
-            temperaturaExtendida.innerHTML += TemperaturaExtendida(icono ,temperaturaMaxima, temperaturaMinima,sensacionTermicaMaxima,velocidadVientoMaxima);
+            // const fecha = document.createElement('p');
+            // fecha.innerHTML = `Fecha de Hoy: ${fechaDate}`;
+            // fecha.classList.add('text-xl')
 
-
-
-
-
-
-            const iconoClima = document.createElement('div');
-            iconoClima.innerHTML = `${icono}`;
-
-            const fecha = document.createElement('p');
-            fecha.innerHTML = `Fecha de Hoy: ${fechaDate}`;
-            fecha.classList.add('text-xl')
-
-            const tempMaxima = document.createElement('p');
-            tempMaxima.innerHTML = `Temperatura Max: ${temperaturaMaxima}&#8451;`;
-            tempMaxima.classList.add('text-xl')
+            // const tempMaxima = document.createElement('p');
+            // tempMaxima.innerHTML = `Temperatura Max: ${temperaturaMaxima}&#8451;`;
+            // tempMaxima.classList.add('text-xl')
 
 
-            const tempMinima = document.createElement('p');
-            tempMinima.innerHTML = `Temperatura Min: ${temperaturaMinima} &#8451;`;
-            tempMinima.classList.add('text-xl')
+            // const tempMinima = document.createElement('p');
+            // tempMinima.innerHTML = `Temperatura Min: ${temperaturaMinima} &#8451;`;
+            // tempMinima.classList.add('text-xl')
 
-            const sensacionTerm = document.createElement('p');
-            sensacionTerm.innerHTML = `Sensacion Termica: ${sensacionTermicaMaxima} &#8451;`;
-            sensacionTerm.classList.add('text-xl')
+            // const sensacionTerm = document.createElement('p');
+            // sensacionTerm.innerHTML = `Sensacion Termica: ${sensacionTermicaMaxima} &#8451;`;
+            // sensacionTerm.classList.add('text-xl')
 
-            const precipitacionTot = document.createElement('p');
-            precipitacionTot.innerHTML = `Lluvia : ${precipitacionTotal} mm`;
-            precipitacionTot.classList.add('text-xl')
+            // const precipitacionTot = document.createElement('p');
+            // precipitacionTot.innerHTML = `Lluvia : ${precipitacionTotal} mm`;
+            // precipitacionTot.classList.add('text-xl')
             
-            const vientoMax = document.createElement('p');
-            vientoMax.innerHTML = `Viento: ${velocidadVientoMaxima } km/h;`;
-            vientoMax.classList.add('text-xl')
+            // const vientoMax = document.createElement('p');
+            // vientoMax.innerHTML = `Viento: ${velocidadVientoMaxima } km/h;`;
+            // vientoMax.classList.add('text-xl')
 
-            const extendidoDiv = document.createElement('div');
-            extendidoDiv.classList.add('text-center', 'text-white')
-            extendidoDiv.appendChild(iconoClima);
-            extendidoDiv.appendChild(fecha);
-            extendidoDiv.appendChild(tempMaxima);
-            extendidoDiv.appendChild(tempMinima);
-            extendidoDiv.appendChild(sensacionTerm);
-            extendidoDiv.appendChild(precipitacionTot);
-            extendidoDiv.appendChild(vientoMax);
-            extendido.appendChild(extendidoDiv)
+            // const extendidoDiv = document.createElement('div');
+            // extendidoDiv.classList.add('text-center', 'text-white')
+            // extendidoDiv.appendChild(iconoClima);
+            // extendidoDiv.appendChild(fecha);
+            // extendidoDiv.appendChild(tempMaxima);
+            // extendidoDiv.appendChild(tempMinima);
+            // extendidoDiv.appendChild(sensacionTerm);
+            // extendidoDiv.appendChild(precipitacionTot);
+            // extendidoDiv.appendChild(vientoMax);
+            // extendido.appendChild(extendidoDiv)
+            temperaturaExtendidaHtml.innerHTML += TemperaturaExtendida(icono,fechaDate ,temperaturaMaxima, temperaturaMinima,sensacionTermicaMaxima,velocidadVientoMaxima);
         }
+         
+        
     }
 
     function iconoPrecipitaciones(precipitations){
@@ -228,8 +152,8 @@ function climaExtendido (datos){
 
 
       const TemperaturaExtendida = (
-        fechaDate,
         icono,
+        fechaDate,
         temperaturaMaxima,
         temperaturaMinima,
         sensacionTermicaMaxima,
@@ -239,72 +163,32 @@ function climaExtendido (datos){
         return (result += `
         <div class="container temperaturaExtendida">
             <div class="row mt-3">
-                <div class="col-3">
-                    <div class="card">
-                        <img class="card-img-top" src="./img/animated/clear-day.svg" alt="">
+                <div class="col-12 col-md-2 " >
+                    <div class='card currentTime col-12 p-1 m-2'>
+                    ${icono}
                         <div class="card-body">
-                            <h5 class="card-title">Titulo</h5>
-                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
-                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
-                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
-                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
-                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
-                        </div>
+                        <div class="row">
+                        <div class="col">
+                            <div class="temperatureText col d-flex align-items-center justify-content-center">
+                                 <h5 class="card-title">${fechaDate}</h5>
+                            </div>
+                            <div class="temperatureText col d-flex align-items-center justify-content-center">
+                            <h6 class="card-subtitle text-muted mb-3">Max: ${temperaturaMaxima}ºC</h6>
+                            </div>
+                            <div class="temperatureText col d-flex align-items-center justify-content-center">
+                            <h6 class="card-subtitle text-muted mb-3">Min: ${temperaturaMinima}ºC</h6>
+                            </div>
+                            <div class="temperatureText col d-flex align-items-center justify-content-center">
+                            <h6 class="card-subtitle text-muted mb-3">ST: ${sensacionTermicaMaxima}ºC</h6>
+                            </div>
+                            <div class="temperatureText col d-flex align-items-center justify-content-center">
+                            <h6 class="card-subtitle text-muted mb-3">${velocidadVientoMaxima}km/h</h6>
+                            </div>
+                            </div>
+                            </div>
+                            </div>  
                     </div>
                 </div>
-                <div class="col-2">
-                    <div class="card tarjetaActual">
-                        <img class="card-img-top" src="./img/animated/clear-day.svg" alt="">
-                        <div class="card-body">
-                            <h5 class="card-title">Titulo</h5>
-                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
-                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
-                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
-                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
-                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="card tarjetaActual">
-                        <img class="card-img-top" src="./img/animated/clear-day.svg" alt="">
-                        <div class="card-body">
-                            <h5 class="card-title">Titulo</h5>
-                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
-                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
-                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
-                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
-                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="card tarjetaActual">
-                        <img class="card-img-top" src="./img/animated/clear-day.svg" alt="">
-                        <div class="card-body">
-                            <h5 class="card-title">Titulo</h5>
-                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
-                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
-                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
-                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
-                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="card tarjetaActual">
-                        <img class="card-img-top" src="./img/animated/clear-day.svg" alt="">
-                        <div class="card-body">
-                            <h5 class="card-title">Titulo</h5>
-                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
-                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
-                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
-                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
-                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
-                        </div>
-                    </div>
-                </div>
-               
             </div>
               `);
       };
