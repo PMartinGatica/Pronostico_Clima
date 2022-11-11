@@ -4,22 +4,135 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Pronostico Ushuaia</title>
 </head>
-<body class="vh-100">
-    <div class="conteiner" py-5 h-100>
-        <div class="row d-flex justify-content-center align-intems-center h-100">
-            <div class="col text-center" style="color: #282828;">
-                <h2>Pronostico Ushuaia</h2>
+<body>
+    <header class="container-fluid my-5">
+        <div class="row nav">
+            <div class="col-auto logo d-flex align-items-center">
+                <h2 class="fw-bold text-uppercase mb-0">APP PRONOSTICO</h2>
+                <div class="icono">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-thermometer" viewBox="0 0 16 16">
+                        <path d="M8 14a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                        <path d="M8 0a2.5 2.5 0 0 0-2.5 2.5v7.55a3.5 3.5 0 1 0 5 0V2.5A2.5 2.5 0 0 0 8 0zM6.5 2.5a1.5 1.5 0 1 1 3 0v7.987l.167.15a2.5 2.5 0 1 1-3.333 0l.166-.15V2.5z"/>
+                    </svg>
+                </div>
+                <p class="mb-0">Ushuaia,Tierra del Fuego</p>
             </div>
         </div>
-    </div>
+    </header> 
     
-    <div class="p-6 mt-10">
+    <main>
+        
+        <!-- <div class="container temperaturaActual">
+            <div class="row mt-3">
+                <div class="col d-flex justify-content-center align-items-center">
+                    <div class="card tarjetaActual">
+                        <img class="card-img-top" src="./img/animated/clear-day.svg" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">Titulo</h5>
+                            <h6 class="card-subtitle text-muted mb-2">Subtitulo</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="container temperaturaExtendida">
+            <div class="row mt-3">
+                <div class="col-3">
+                    <div class="card tarjetaActual">
+                        <img class="card-img-top" src="./img/animated/clear-day.svg" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">Titulo</h5>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <!-- <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="card tarjetaActual">
+                        <img class="card-img-top" src="./img/animated/clear-day.svg" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">Titulo</h5>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="card tarjetaActual">
+                        <img class="card-img-top" src="./img/animated/clear-day.svg" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">Titulo</h5>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="card tarjetaActual">
+                        <img class="card-img-top" src="./img/animated/clear-day.svg" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">Titulo</h5>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="card tarjetaActual">
+                        <img class="card-img-top" src="./img/animated/clear-day.svg" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">Titulo</h5>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-2">
+                    <div class="card tarjetaActual">
+                        <img class="card-img-top" src="./img/animated/clear-day.svg" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">Titulo</h5>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </main>
+
+
+
+    
+    <div class="p-1 mt-2">
         <div id="resultado">
-            <p class="text-center text-white mt-6"></p>
+            <p class="text-center text-white mt-2"></p>
         </div>
     </div>
 
@@ -28,7 +141,6 @@
             <p class="text-center text-white mt-6"></p>
         </div>
     </div>
-    
 
     <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/script/app.js"></script>

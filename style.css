@@ -1,7 +1,23 @@
-body,.vh-100{
+body{
     background-color: #c1cfea;
+    font-family: 'Open Sans', sans-serif;;
 }
 
-row,h-100{
-    color: #282828;
+header .nav{
+    min-height: 80px;
+    background-color:whitesmoke;
+}
+
+header .logo .h2
+header .logo p
+{
+font-size: 16px;
+}
+header .logo p{
+    color: #777;
+}
+
+.temperaturaActual .tarjetaActual {
+    max-width: 250px;
+    max-height: 300px;
 }

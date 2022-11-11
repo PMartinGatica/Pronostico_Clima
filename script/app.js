@@ -12,7 +12,7 @@ fetch(url)
         
 
 mostrarDatos = (datos) => {
-   // climaActual(datos);
+    climaActual(datos);
     climaExtendido(datos);
 }
 
