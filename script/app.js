@@ -143,6 +143,13 @@ function climaExtendido (datos){
             let icono = iconoPrecipitaciones(precipitacionTotal);
             console.log(icono);
 
+            temperaturaExtendida.innerHTML += TemperaturaExtendida(icono ,temperaturaMaxima, temperaturaMinima,sensacionTermicaMaxima,velocidadVientoMaxima);
+
+
+
+
+
+
             const iconoClima = document.createElement('div');
             iconoClima.innerHTML = `${icono}`;
 
@@ -216,6 +223,89 @@ function climaExtendido (datos){
             </div>
         </div>
     </div>
+              `);
+      };
+
+
+      const TemperaturaExtendida = (
+        fechaDate,
+        icono,
+        temperaturaMaxima,
+        temperaturaMinima,
+        sensacionTermicaMaxima,
+        velocidadVientoMaxima
+      ) => {
+        let result = "" 
+        return (result += `
+        <div class="container temperaturaExtendida">
+            <div class="row mt-3">
+                <div class="col-3">
+                    <div class="card">
+                        <img class="card-img-top" src="./img/animated/clear-day.svg" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">Titulo</h5>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="card tarjetaActual">
+                        <img class="card-img-top" src="./img/animated/clear-day.svg" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">Titulo</h5>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="card tarjetaActual">
+                        <img class="card-img-top" src="./img/animated/clear-day.svg" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">Titulo</h5>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="card tarjetaActual">
+                        <img class="card-img-top" src="./img/animated/clear-day.svg" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">Titulo</h5>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="card tarjetaActual">
+                        <img class="card-img-top" src="./img/animated/clear-day.svg" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">Titulo</h5>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                            <h6 class="card-subtitle text-muted mb-3">Subtitulo</h6>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
               `);
       };
 
