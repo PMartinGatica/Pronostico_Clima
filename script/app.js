@@ -161,32 +161,23 @@ function climaExtendido (datos){
       ) => {
         let result = "" 
         return (result += `
-        <div class="container temperaturaExtendida">
+        <div class="container temperaturaExtendida d-flex  justify-content-center align-items-center">
             <div class="row mt-3">
                 <div class="col-12 col-md-2 " >
-                    <div class='card currentTime col-12 p-1 m-2'>
+                    <div class='card currentTime  p-1 m-2'>
                     ${icono}
                         <div class="card-body">
-                        <div class="row">
-                        <div class="col">
-                            <div class="temperatureText col d-flex align-items-center justify-content-center">
-                                 <h5 class="card-title">${fechaDate}</h5>
-                            </div>
-                            <div class="temperatureText col d-flex align-items-center justify-content-center">
+                            <h5 class="card-title">${fechaDate}</h5>
+                            
                             <h6 class="card-subtitle text-muted mb-3">Max: ${temperaturaMaxima}ºC</h6>
-                            </div>
-                            <div class="temperatureText col d-flex align-items-center justify-content-center">
+                            
                             <h6 class="card-subtitle text-muted mb-3">Min: ${temperaturaMinima}ºC</h6>
-                            </div>
-                            <div class="temperatureText col d-flex align-items-center justify-content-center">
+                            
                             <h6 class="card-subtitle text-muted mb-3">ST: ${sensacionTermicaMaxima}ºC</h6>
-                            </div>
-                            <div class="temperatureText col d-flex align-items-center justify-content-center">
+                            
                             <h6 class="card-subtitle text-muted mb-3">${velocidadVientoMaxima}km/h</h6>
-                            </div>
-                            </div>
-                            </div>
-                            </div>  
+                            
+                        </div> 
                     </div>
                 </div>
             </div>
