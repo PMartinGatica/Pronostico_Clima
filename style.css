@@ -1,5 +1,11 @@
-body{
-    background-color: #c1cfea;
+body,footer{
+    /* //background-imagen fondo */
+    background-image: url("img/fondo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    
     font-family: 'Open Sans', sans-serif;;
 }
 
@@ -17,7 +23,5 @@ header .logo p{
     color: #777;
 }
 
-card-body .temperatureText{
-    font-weight: bold;
-   
-}
+
+

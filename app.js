@@ -1,3 +1,7 @@
+const container = document.querySelector('.container');
+const resultado = document.querySelector('#resultado');
+const extendido = document.querySelector('#extendido');
+
 let url = 'https://api.open-meteo.com/v1/forecast?latitude=-54.82&longitude=-68.36&hourly=temperature_2m,apparent_temperature,precipitation,windspeed_10m&timezone=America%2FSao_Paulo';
 
 fetch(url)
@@ -5,14 +9,19 @@ fetch(url)
     .then(data => {
         mostrarDatos(data);
     });
+        
+
 mostrarDatos = (datos) => {
     climaActual(datos);
     climaExtendido(datos);
 }
 function climaActual(datos){
-    const { hourly:{time,temperature_2m, precipitation, windspeed_10m} } = datos;
+    const { hourly:{time,temperature_2m, apparent_temperature, precipitation, windspeed_10m} } = datos;
         const fecha = time[0];
+        var fechaDate = formatoFechaActual(fecha);
         let temperaturaMaxima = (Math.max(...temperature_2m.slice(0,24)));
+        let temperaturaMinima = (Math.min(...temperature_2m.slice(0,24)));
+        let sensacionTermicaMaxima = (Math.max(...apparent_temperature.slice(0,24)));
         let precipitacionTotal = (precipitation.slice(0,24).reduce((a,b) => a + b, 0));
         let velocidadVientoMaxima = (Math.max(...windspeed_10m.slice(0,24)));
         let icono = iconoPrecipitaciones(precipitacionTotal);
@@ -23,8 +32,10 @@ function formatoFechaActual(fecha){
     const dia = fechaFormateada.getDate();
     const mes = fechaFormateada.getMonth()+1;
     const anio = fechaFormateada.getFullYear();
+    // console.log(`${dia}/${mes}/${anio}`);
     return (`${dia}/${mes}/${anio}`);
 }
+
 function formatoFechaSemanal(fecha){
     dateSem = [];
     const inicio = new Date(fecha[0]);
@@ -38,20 +49,66 @@ function formatoFechaSemanal(fecha){
 }
 function climaExtendido (datos){
     const { hourly:{time,temperature_2m, apparent_temperature, precipitation, windspeed_10m} } = datos;
+
         var formatoSem = formatoFechaSemanal(time);
         for (let index = 0; index < formatoSem.length; index++) {
             var fechaDate = formatoSem[index];
+            console.log(fechaDate);
             //temperatura maximas del dia  //
             var temperaturaMaxima = (Math.max(...temperature_2m.slice(index*24,(index+1)*24)));
+            console.log(temperaturaMaxima);
             //temperatura minimas del dia
             var temperaturaMinima = (Math.min(...temperature_2m.slice(index*24,(index+1)*24)));
+            console.log(temperaturaMinima);
             //sensacion termica maximas del dia
             var sensacionTermicaMaxima = (Math.max(...apparent_temperature.slice(index*24,(index+1)*24)));
+            console.log(sensacionTermicaMaxima);
             //presipitacion total del dia
             var precipitacionTotal = (precipitation.slice(index*24,(index+1)*24).reduce((a,b) => a + b, 0));
+            console.log(precipitacionTotal);
             //velocidad del viento maxima del dia
             var velocidadVientoMaxima = (Math.max(...windspeed_10m.slice(index*24,(index+1)*24)));
+            console.log(velocidadVientoMaxima);
             var icono = iconoPrecipitaciones(precipitacionTotal);
+            console.log(icono);
+            // const iconoClima = document.createElement('div');
+            // iconoClima.innerHTML = `${icono}`;
+
+            // const fecha = document.createElement('p');
+            // fecha.innerHTML = `Fecha de Hoy: ${fechaDate}`;
+            // fecha.classList.add('text-xl')
+
+            // const tempMaxima = document.createElement('p');
+            // tempMaxima.innerHTML = `Temperatura Max: ${temperaturaMaxima}&#8451;`;
+            // tempMaxima.classList.add('text-xl')
+
+
+            // const tempMinima = document.createElement('p');
+            // tempMinima.innerHTML = `Temperatura Min: ${temperaturaMinima} &#8451;`;
+            // tempMinima.classList.add('text-xl')
+
+            // const sensacionTerm = document.createElement('p');
+            // sensacionTerm.innerHTML = `Sensacion Termica: ${sensacionTermicaMaxima} &#8451;`;
+            // sensacionTerm.classList.add('text-xl')
+
+            // const precipitacionTot = document.createElement('p');
+            // precipitacionTot.innerHTML = `Lluvia : ${precipitacionTotal} mm`;
+            // precipitacionTot.classList.add('text-xl')
+            
+            // const vientoMax = document.createElement('p');
+            // vientoMax.innerHTML = `Viento: ${velocidadVientoMaxima } km/h;`;
+            // vientoMax.classList.add('text-xl')
+
+            // const extendidoDiv = document.createElement('div');
+            // extendidoDiv.classList.add('text-center', 'text-white')
+            // extendidoDiv.appendChild(iconoClima);
+            // extendidoDiv.appendChild(fecha);
+            // extendidoDiv.appendChild(tempMaxima);
+            // extendidoDiv.appendChild(tempMinima);
+            // extendidoDiv.appendChild(sensacionTerm);
+            // extendidoDiv.appendChild(precipitacionTot);
+            // extendidoDiv.appendChild(vientoMax);
+            // extendido.appendChild(extendidoDiv)
             temperaturaExtendidaHtml.innerHTML += TemperaturaExtendida(icono,fechaDate ,temperaturaMaxima, temperaturaMinima,sensacionTermicaMaxima,velocidadVientoMaxima);
         }
         
@@ -66,6 +123,7 @@ function climaExtendido (datos){
         if (precipitations <= 60) {return `<img class="card-img-top" src='./img/animated/rainy-3-day.svg' alt='Lluvias muy fuertes'>`}
         else {return `<img class="card-img-top" src='./img/animated/scattered-thunderstorms-day.svg' alt='Lluvias muy fuertes'>`;}
     }
+
     const TemperaturaActual = (
         icono,
         temperaturaMaxima,
@@ -90,6 +148,8 @@ function climaExtendido (datos){
     </div>
               `);
       };
+
+
       const TemperaturaExtendida = (
         icono,
         fechaDate,
